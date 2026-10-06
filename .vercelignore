@@ -1,0 +1,13 @@
+.env
+.env.*
+!.env.example
+data/
+node_modules/
+AGENTS.md
+*.pdf
+Learning Path*.md
+docs/
+test/
+.agents/
+.serena/
+skills-lock.json

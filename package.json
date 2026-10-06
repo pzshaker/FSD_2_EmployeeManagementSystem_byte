@@ -1,0 +1,23 @@
+{
+  "name": "byte-employee-management",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24.11.1 <25"
+  },
+  "scripts": {
+    "db:seed": "node scripts/seed.js",
+    "production:setup": "node --env-file=.env.production.local scripts/setup-production.js",
+    "admin:create": "node --env-file-if-exists=.env scripts/create-admin.js",
+    "start": "node --env-file-if-exists=.env src/server.js",
+    "dev": "node --watch --env-file-if-exists=.env src/server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.18.0",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.7.0",
+    "express-session": "^1.19.0"
+  }
+}

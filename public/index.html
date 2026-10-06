@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content">
+  <meta name="color-scheme" content="light">
+  <title>Fieldwork — People directory</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="announcement" class="sr-only" role="status" aria-live="polite"></div>
+  <main id="main" tabindex="-1">
+    <section id="startup" class="startup" aria-labelledby="startup-title">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">p</span>fieldwork</div>
+      <h1 id="startup-title" tabindex="-1">Checking your session…</h1>
+      <p id="startup-message">Opening your private workspace.</p>
+      <button id="startup-retry" hidden>Try again</button>
+    </section>
+    <section id="login" class="login" hidden aria-labelledby="login-title">
+      <div class="login-brand">
+        <div class="brand"><span class="brand-mark" aria-hidden="true">p</span>fieldwork</div>
+        <div class="brand-copy"><p class="eyebrow">A smaller way to stay in sync</p><h2>People, in<br> one clear place.</h2><p><span class="desktop-copy">A focused workspace for keeping your employee records accurate and up to date.</span><span class="mobile-copy">A focused workspace for keeping employee records accurate and up to date.</span></p></div>
+        <div class="orbit" aria-hidden="true"><img src="/assets/orbit.svg" alt=""><img class="orbit-inner" src="/assets/orbit-inner.svg" alt=""><img class="orbit-accent" src="/assets/orbit-accent.svg" alt=""></div>
+        <p class="brand-footer">Employee management / Admin access</p>
+      </div>
+      <div class="login-content">
+        <form id="login-form" novalidate>
+          <h1 id="login-title" tabindex="-1">Welcome back</h1>
+          <p class="muted">Sign in to manage your people directory.</p>
+          <div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="username" required placeholder="admin@company.com" aria-describedby="email-error"><p id="email-error" class="field-error" hidden></p></div>
+          <div class="field"><label for="password">Password</label><div class="password-wrap"><input id="password" name="password" type="password" autocomplete="current-password" required placeholder="Enter your password" aria-describedby="password-error password-hint"><button id="password-toggle" type="button" aria-label="Show password" aria-pressed="false">Show</button></div><p id="password-error" class="field-error" hidden></p><p id="password-hint" class="hint">Use your administrator account to continue.</p></div>
+          <p id="login-message" class="notice" role="alert" hidden></p>
+          <button id="sign-in" class="primary" type="submit">Sign in</button>
+          <p class="session-note"><span class="desktop-copy">Your session is private and expires after 8 hours.</span><span class="mobile-copy">Private administrator session · expires after 8 hours</span></p>
+        </form>
+        <p class="login-footer"><span class="desktop-copy">© 2026 Fieldwork · Private workspace</span><span class="mobile-copy">Employee management / Admin access</span></p>
+      </div>
+    </section>
+    <section id="directory" class="workspace" hidden aria-labelledby="directory-title">
+      <aside class="sidebar"><div class="brand"><span class="brand-mark" aria-hidden="true">p</span>fieldwork</div><p class="workspace-label">Workspace</p><nav aria-label="Workspace"><a href="/" aria-current="page"><span aria-hidden="true">●</span> People</a></nav><p class="sidebar-footer">Private admin workspace</p></aside>
+      <header class="topbar"><div class="mobile-brand brand"><span class="brand-mark" aria-hidden="true">p</span>fieldwork</div><span class="breadcrumb">Workspace / People</span><div id="account" class="account"><button id="account-toggle" aria-expanded="false" aria-controls="account-panel" aria-label="Administrator account"><span class="admin-avatar"><img src="/assets/admin-avatar.svg" alt=""><span id="admin-initial" aria-hidden="true">A</span></span><span class="admin-label">Admin</span></button><div id="account-panel" class="account-panel" hidden><strong>Admin account</strong><p id="admin-email" class="sr-only"></p><button id="sign-out">Sign out</button></div></div></header>
+      <div class="directory-content"><p class="eyebrow">People operations</p><div class="page-heading"><div><h1 id="directory-title" tabindex="-1">People directory</h1><p class="muted">A clear view of the people who keep the work moving.</p><p id="mobile-employee-count">Loading employees…</p></div><button id="add-employee" class="primary">Add employee</button></div>
+        <p id="directory-message" class="notice" role="alert" hidden></p>
+        <div class="directory-toolbar"><p id="employee-count">Loading employees…</p></div>
+        <div id="employee-content" aria-busy="true"></div>
+        <div class="directory-refresh"><button id="refresh" class="secondary">Refresh directory</button></div>
+      </div>
+    </section>
+  </main>
+  <dialog id="employee-dialog" aria-labelledby="employee-title" aria-describedby="employee-description">
+    <header class="editor-mobile-header"><div class="brand"><span class="brand-mark" aria-hidden="true">p</span>fieldwork</div><div id="editor-account"></div></header>
+    <form id="employee-form" novalidate>
+      <div class="editor-body">
+        <button id="employee-back" class="editor-back" type="button">‹ People</button>
+        <h2 id="employee-title">Add employee</h2>
+        <p id="employee-description" class="muted">Add the details you need for the team directory.</p>
+        <div class="employee-fields">
+          <div class="field"><label for="employee-name">Full name</label><input id="employee-name" name="name" required autocomplete="off" placeholder="e.g. Jordan Rivera" aria-describedby="employee-name-error"><p id="employee-name-error" class="field-error" hidden></p></div>
+          <div class="field"><label for="employee-email">Work email</label><input id="employee-email" name="email" type="email" required autocomplete="off" placeholder="name@company.com" aria-describedby="employee-email-error"><p id="employee-email-error" class="field-error" hidden></p></div>
+          <div class="field"><label for="employee-department">Department</label><input id="employee-department" name="department" required autocomplete="off" placeholder="e.g. Engineering" aria-describedby="employee-department-error"><p id="employee-department-error" class="field-error" hidden></p></div>
+          <div class="field"><label for="employee-jobTitle">Job title</label><input id="employee-jobTitle" name="jobTitle" required autocomplete="off" placeholder="e.g. Product Designer" aria-describedby="employee-jobTitle-error"><p id="employee-jobTitle-error" class="field-error" hidden></p></div>
+        </div>
+        <p id="employee-hint" class="editor-hint">All four fields are required. Email addresses are saved lowercase.</p>
+        <p id="employee-metadata" class="editor-metadata" hidden></p>
+        <p id="employee-message" class="editor-error" role="alert" hidden></p>
+      </div>
+      <footer class="editor-footer"><button id="employee-cancel" type="button">Cancel</button><button id="employee-submit" class="primary" type="submit">Create employee</button></footer>
+    </form>
+  </dialog>
+  <dialog id="delete-dialog" aria-labelledby="delete-title" aria-describedby="delete-description delete-email">
+    <form id="delete-form">
+      <div class="delete-body">
+        <div class="delete-symbol" aria-hidden="true"><img src="/assets/delete-symbol.svg" alt=""><span>!</span></div>
+        <h2 id="delete-title">Delete this employee?</h2>
+        <p id="delete-description"></p>
+        <p id="delete-email"></p>
+        <p id="delete-message" class="editor-error" role="alert" hidden></p>
+      </div>
+      <footer class="delete-footer"><button id="delete-cancel" type="button" autofocus>Keep employee</button><button id="delete-submit" class="danger" type="submit">Delete employee</button></footer>
+    </form>
+  </dialog>
+  <div id="save-confirmation" class="save-confirmation" role="status" hidden><strong id="save-title"></strong><p id="save-detail"></p></div>
+  <noscript><p class="notice">Enable JavaScript to sign in and load the employee directory.</p></noscript>
+</body>
+</html>
